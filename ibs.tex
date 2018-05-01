@@ -18,10 +18,18 @@
 \begin{document}
   %\pagenumbering{gobble}
 
+  \begin{titlepage}
+
   \begin{center}
-    \section*{Klasifikace situace na základě dat z PIR senzorů}
-    Martin Beneš
+  % Headings
+  \textsc{\LARGE Brno University of technology}\\[0.5cm]
+  \textsc{\large Faculty of Information Technology}\\[9cm]
+  
+  % Title - lines
+  { \Large \bfseries Klasifikace situace na základě dat z PIR senzorů}\\[0.3cm]
+  { \bfseries Martin Beneš}\\[1cm]
   \end{center}
+  \end{titlepage}
   \newpage
 
   % table of contents
@@ -179,11 +187,26 @@
   expectation minimalization}), který namísto tvrdých přiřazení jako u vitebri training využívá vah
   - posteriorních pravděpodobností.
 
+  Další možností je použít umělé neuronové sítě ({\it neural networks}), které se v několika posledních
+  letech těší velké oblibě. Jedná se o lineární klasifikátory, uspořádané do vrstev. Mezi jednotlivými
+  vrstvami jsou spoje, každý má svoji váhu. Poté každý neuron má svou váhu (tzv. {\it bayes}). Pokud
+  přivedeme na vstup neuronové sítě náš signál (neuronová síť má více vstupů, podle toho, kolik má
+  neuronů vstupní vrstva), hodnoty se propropagují a naváhují přes jednotlivé neurony a na výstupu
+  získáme požadovaný výsledek - softmax (číslo, čím kladnější, tím více se neuronová síť přiklání
+  k první variantě, a naopak čím více záporná, tím k druhé), nebo pravděpodobnost (tj. softmax v
+  logistické sigmoidě), neboli $\sigma(x) = \frac{1}{1 + e^{-x}}$.
+
+  Výhoda neuronových sítí v tomto případě je jejich intuitivnost a možnost kaskádování (tj. {\it
+  deep neural networks}). Neuronová síť se učí pomocí {\it back propagation}, kdy porovná výsledek
+  rozhodnutí s očekávaným výsledkem a zpětně upravuje váhy jednotlivých spojů pomocí derivací přes
+  jednotlivé vrstvy - jedná se o učení s učitelem ({\it supervised learning}).
+
   \section{Rozpoznávání situace}
   Pokud jsme schopni reálně lokalizovat přítomné osoby, je teoreticky možné klasifikovat, jaká je jejich
   interakce (minimálně v horizontu času): zdali a jakým směrem se vzájemně pohybují. Pro takovou
   úroveň je vhodné přidat mimo snímání teploty např. snímání zvuku (klasifikace hlasu) atd.
-  Poté se výsledky velice zpřesní.
+  Poté se výsledky velice zpřesní. Většina průmyslově prodávaných termosenzorů má přímo v sobě
+  i snímaní množství světla, který dopadá na senzor, čímž do jisté míry odpadají další náklady.
   
   \section{Vyžití}
   Popsaná aplikace by mohla mít význam ve fyzické bezpečnosti. Dá se použít jako součást
@@ -197,7 +220,7 @@
   Takovéto výpočty se již velice podobají těm, kterými se zabývá robotika, kde robot snímá své
   okolí pomocí gyroskopů, kamer, teplotních čidel, mikrofonů a dalších senzorů. A koneckonců inspirací
   pro takový systém je jednoznačně lidské tělo, které se ve své podstatě také dá chápat jako soubor
-  senzorů (v biologii se jim říká receptory, nebo smysly)
+  senzorů (v biologii se jim říká receptory, nebo smysly).
   
   V lidské kůži se nachází dva druhy termoreceptorů, jedny snímající chlad - teploty menší než
   tělesná teplota, a teploty snímající horko - vyšší než tělesná teplota. Ovšem část mozku,
